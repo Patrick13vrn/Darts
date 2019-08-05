@@ -28,6 +28,10 @@ class Player:
                     print(f'Остаток: {self.score_remain - pre_score}\n')
                 self.score_remain -= score
             else:
+                if self.is_checkout(throw[0], throw[1], self.score_remain):
+                    print('Победа!')
+                    break
+                print(f'Перебор!\nОстаток: {self.score_remain}\n')
                 break
 
         return print(f'Игрок {self.name} выбил {score}')
@@ -38,5 +42,9 @@ class Player:
     def is_end_of_turn(self, pre_score):
         return True if self.score_remain - pre_score <= 1 else False
 
-
-
+    def is_checkout(self, throw_k, throw_v, remain):
+        if throw_k == 2:
+            if throw_k * throw_v == remain:
+                return True
+        else:
+            return False
