@@ -37,3 +37,6 @@ class Player:
 
     def is_end_of_turn(self, pre_score):
         return True if self.score_remain - pre_score <= 1 else False
+
+
+
