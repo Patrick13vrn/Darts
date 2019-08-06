@@ -208,4 +208,3 @@ def checkout(remaining_score):
     return combination
 
 
-# print(checkout(155))
