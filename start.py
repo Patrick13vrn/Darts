@@ -1,5 +1,6 @@
 from player import Player
+from game import Game
 
-player_1 = Player('Алексей')
-player_1.throws()
-player_1.show_results()
+
+new_game = Game(501, player_1, player_2)
+new_game.start()

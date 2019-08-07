@@ -1,12 +1,14 @@
 from functions import convert, checkout
+from game import Game
 
 
 class Player:
     """ Class describes player """
 
-    def __init__(self, name):
+    def __init__(self, name, game_type=501):
         self.name = name
-        self.score_remain = 189
+        self.score_remain = game_type
+        self.end = False
 
     def throws(self):
         # total sum of 3 throws is going to deducted
@@ -36,6 +38,7 @@ class Player:
                     print('Победа!')
                     score = pre_score
                     self.score_remain -= score
+                    self.end = True
                     break
                 print(f'Перебор!\nОстаток: {self.score_remain}\n')
                 break
