@@ -35,7 +35,7 @@ class Player:
                 score = pre_score if attempt == 2 else 0
             else:
                 if self.is_checkout(throw, (self.score_remain - pre_score)):
-                    print('\033[1;32;40m Победа!')
+                    print('Победа!')
                     score = pre_score
                     self.score_remain -= score
                     self.end = True
