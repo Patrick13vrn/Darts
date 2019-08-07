@@ -1,3 +1,6 @@
+from player import Player
+
+
 class Game:
     """ Initiates new game """
 
@@ -8,5 +11,16 @@ class Game:
         self.player_2 = player_2
 
     def start(self):
-        self.player_1.throws()
-        self.player_2.throws()
+        player_1 = Player(self.player_1, self.game_type)
+        player_2 = Player(self.player_2, self.game_type)
+
+        while True:
+            if not (player_1.end or player_2.end):
+                player_1.throws()
+            else:
+                break
+
+            if not (player_1.end or player_2.end):
+                player_2.throws()
+            else:
+                break

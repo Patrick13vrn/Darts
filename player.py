@@ -1,5 +1,4 @@
 from functions import convert, checkout
-from game import Game
 
 
 class Player:
@@ -15,6 +14,7 @@ class Player:
         score = 0
         # total sum of 3 throws (temporary)
         pre_score = 0
+        print(f'Ход {self.name}:')
         if checkout(self.score_remain - pre_score):
             print(f'Остаток: {self.score_remain} = {checkout(self.score_remain)} \n')
         else:
@@ -35,7 +35,7 @@ class Player:
                 score = pre_score if attempt == 2 else 0
             else:
                 if self.is_checkout(throw, (self.score_remain - pre_score)):
-                    print('Победа!')
+                    print('\033[1;32;40m Победа!')
                     score = pre_score
                     self.score_remain -= score
                     self.end = True
@@ -43,7 +43,8 @@ class Player:
                 print(f'Перебор!\nОстаток: {self.score_remain}\n')
                 break
             self.score_remain -= score
-        print(f'Игрок {self.name} выбил {score}')
+        if not self.end:
+            print(f'Игрок {self.name} выбил {score}\n\n')
 
     def show_results(self):
         if self.score_remain != 0:
@@ -61,6 +62,7 @@ class Player:
         """
         if throw[0] == 2:
             if remain == 0:
+                self.end = True
                 return True
         else:
             return False
